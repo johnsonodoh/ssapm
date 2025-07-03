@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <h2>Admin Dashboard</h2>
+    <form method="POST" action="/add_staff">
+        <input type="text" name="name" placeholder="Name" required>
+        <input type="text" name="role" placeholder="Role" required>
+        <button type="submit">Add Staff</button>
+    </form>
+
+    <h3>All Staff</h3>
+    <ul>
+        {% for s in staff %}
+        <li>ID: {{ s[0] }}, Name: {{ s[1] }}, Role: {{ s[2] }}</li>
+        {% endfor %}
+    </ul>
+
+    <h3>Attendance Records</h3>
+    <table border="1">
+        <tr><th>Name</th><th>Date</th><th>Clock In</th><th>Clock Out</th></tr>
+        {% for r in records %}
+        <tr><td>{{ r[0] }}</td><td>{{ r[1] }}</td><td>{{ r[2] }}</td><td>{{ r[3] }}</td></tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
